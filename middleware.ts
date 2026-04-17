@@ -1,0 +1,26 @@
+import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import {jwtVerify} from "jose";
+
+export async function middleware(request: NextRequest) {
+    const token = request.cookies.get("access_token")?.value;
+
+    console.log(token);
+
+    if(!token) {
+      return NextResponse.redirect(new URL("/login", request.url))
+    }
+
+    try {
+        jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET!));
+        console.log("Token  invalido");
+        return NextResponse.next();
+    } catch (e){
+        console.log("Token  invalido");
+        return NextResponse.redirect(new URL("/login", request.url))
+    }
+}
+
+export const config = {
+    matcher: ["/", "/alunos", "/aluno/:path*"],
+}
