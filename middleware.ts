@@ -13,10 +13,9 @@ export async function middleware(request: NextRequest) {
 
     try {
         jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET!));
-        console.log("Token  invalido");
         return NextResponse.next();
     } catch (e){
-        console.log("Token  invalido");
+        console.error(e);
         return NextResponse.redirect(new URL("/login", request.url))
     }
 }
