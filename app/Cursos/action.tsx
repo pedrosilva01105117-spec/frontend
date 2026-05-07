@@ -1,16 +1,15 @@
-"use server";
-
-import { Aluno } from "@/interfaces/alunos";
+import { Curso } from "@/interfaces/cursos";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
+import { createCursos } from "@/app/Cursos/cadastro/action";
 import { redirect } from "next/navigation";
 
-export async function getAlunos() {
+export async function getCursos() {
     try {
     const cookiesStore = await cookies();
     const token = cookiesStore.get("access_token")?.value
-
-    const response = await fetch("http://localhost:8080/alunos", {
+ 
+    const response = await fetch("http://localhost:8080/Cursos", {
         headers: {
             Authorization: `Bearer ${token}`
         },
@@ -22,10 +21,10 @@ export async function getAlunos() {
     }
 
     if (response.status === 200) {
-       const data = await response.json();
-        return data as Aluno[];
-    }
-    
+           const data = await response.json();
+            return data as Curso[];
+        }
+
     console.error(response);
     return [];
     } catch (e) {
@@ -34,11 +33,12 @@ export async function getAlunos() {
     }
 }
 
-export async function deleteAluno(id: number) {
+
+export async function deleteCurso(id: number) {
     const cookiesStore = await cookies();
     const token = cookiesStore.get("access_token")?.value;
 
-    const response = await fetch(`http://localhost:8080/alunos/${id}`, {
+    const response = await fetch(`http://localhost:8080/Cursos/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`
@@ -57,5 +57,4 @@ export async function deleteAluno(id: number) {
     }
 
     return data;
-    
 }

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react"
+import Starfield from "@/components/Starfield";
 
 interface Props {
     onSend: (email: string, password: string) => Promise<void | string>;
@@ -22,7 +23,6 @@ export default function LoginForm({onSend}: Props) {
 
         router.push("/")
     }
-
 
     return (
         <div className="flex flex-col p-7  h-50 flex-1 items-center justify-center gap-3 ">
@@ -45,6 +45,5 @@ export default function LoginForm({onSend}: Props) {
                 Entrar
                 </button>
             </div> 
-            
     )
 }

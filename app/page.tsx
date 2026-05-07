@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Starfield from "@/components/Starfield";
 
 export default function Home() {
   return (
     <>
+    <Starfield />
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -right-24 -top-24 rounded-full bg-[#5B8BF5] opacity-[0.18] blur-[120px]" />
         <div className="absolute -bottom-20 -left-20 rounded-full bg-[#7DF9C2] opacity-[0.18] blur-[120px]" />
@@ -25,7 +27,7 @@ export default function Home() {
              <Link
                   href="/alunos"
                   className="group relative flex items-center text-white text-[17px] font-medium tracking-[0.05em] 
-                  bg-[#a370f0] rounded-[0.9em] h-[2.8em] pl-[1.2em] pr-[3.3em] cursor-pointer
+                  bg-white/5 rounded-[0.9em] h-[2.8em] pl-[1.2em] pr-[3.3em] cursor-pointer
                   shadow-[inset_0_0_1.6em_-0.6em_#714da6] overflow-hidden"
                 >
                   👥 Alunos
@@ -51,11 +53,35 @@ export default function Home() {
             <Link
               href="/login"
               className="group relative flex items-center text-white text-[17px] font-medium tracking-[0.05em] 
-              bg-[#a370f0] rounded-[0.9em] h-[2.8em] pl-[1.2em] pr-[3.3em] cursor-pointer
+              bg-white/5 rounded-[0.9em] h-[2.8em] pl-[1.2em] pr-[3.3em] cursor-pointer
               shadow-[inset_0_0_1.6em_-0.6em_#714da6] overflow-hidden"
             >
               🔐 Login
 
+              <span
+                className="absolute right-[0.3em] flex items-center justify-center 
+                h-[2.2em] w-[2.2em] bg-white rounded-[0.7em]
+                shadow-[0.1em_0.1em_0.6em_0.2em_#7b52b9]
+                transition-all duration-300
+                group-hover:w-[calc(100%-0.6em)]
+                active:scale-95"
+              >
+                <svg
+                  className="w-[1.1em] text-[#7b52b9] transition-transform duration-300 group-hover:translate-x-[0.1em]"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M5 10h10M10 5l5 5-5 5" />
+                </svg>
+              </span>
+            </Link>
+            <Link
+              href="/Cursos"
+              className="group relative flex items-center text-white text-[17px] font-medium tracking-[0.05em] 
+              bg-white/5 rounded-[0.9em] h-[2.8em] pl-[1.2em] pr-[3.3em] cursor-pointer
+              shadow-[inset_0_0_1.6em_-0.6em_#714da6] overflow-hidden"
+            >
+               📚 Cursos
               <span
                 className="absolute right-[0.3em] flex items-center justify-center 
                 h-[2.2em] w-[2.2em] bg-white rounded-[0.7em]

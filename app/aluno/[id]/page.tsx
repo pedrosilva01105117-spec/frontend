@@ -1,10 +1,11 @@
 "use client"
 
+import { PenBox } from "lucide-react";
 import { getAluno } from "./actions";
 import { Aluno } from "@/interfaces/alunos";
 import { useParams } from "next/navigation";
-import router from "next/router";
 import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 
 interface Star {
     x: number;
@@ -134,6 +135,9 @@ export default function AlunoPage() {
                                 <p className="mt-1 text-2xl font-bold tracking-tight text-white">{aluno.nome}</p>
                             </div>
                         )}
+                        <Link href={`/aluno/${id}/editar`}>
+                            <PenBox />
+                        </Link>
                         {aluno.idade && (
                             <div>
                                 <span className="text-xs font-semibold uppercase tracking-widest text-white/40">Idade</span>

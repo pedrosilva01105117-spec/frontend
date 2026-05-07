@@ -4,7 +4,7 @@ export interface CursoData {
     id: number;
     nome: string;
     professor?: string;
-    cargaHorari: number;
+    cargaHoraria: number;
     descricao: string;
     createAT: Date;
     updateAT: Date;
