@@ -1,16 +1,16 @@
 "use server";
 
-import { Aluno } from "@/interfaces/alunos";
+import { Curso } from "@/interfaces/cursos";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export async function getAluno(id: number) {
+export async function getCurso(id: number) {
     try {
     const cookiesStore = await cookies();
     const token = cookiesStore.get("access_token")?.value;
     console.log(token);
-    const response = await fetch(`http://localhost:8080/alunos/${id}`, {
+    const response = await fetch(`http://localhost:8080/Cursos/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`
         },
@@ -23,25 +23,25 @@ export async function getAluno(id: number) {
             redirect("/login");
         }
 
-    return data as Aluno;
+    return data as Curso;
     } catch (e) {
         console.error(e);
-        return {} as Aluno;
+        return {} as Curso;
     }
 };
 
-export async function updateAluno(id: number, aluno: Aluno) {
+export async function updateCurso(id: number, curso: Curso) {
     try{
     const cookiesStore = await cookies();
     const token = cookiesStore.get("access_token")?.value;
 
-    const response = await fetch(`http://localhost:8080/alunos/${id}`, {
+    const response = await fetch(`http://localhost:8080/Cursos/${id}`, {
         method: "PUT",
         headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(aluno),
+        body: JSON.stringify(curso),
     });
 
     if (response.status === 401) {
@@ -57,6 +57,6 @@ export async function updateAluno(id: number, aluno: Aluno) {
     return data;
 } catch (e) {
     console.error(e);
-    return "Erro ao atualizar o aluno";
+    return "Erro ao atualizar o Curso";
 }
 }

@@ -1,7 +1,8 @@
+"use server";
+
 import { Curso } from "@/interfaces/cursos";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { createCursos } from "@/app/Cursos/cadastro/action";
 import { redirect } from "next/navigation";
 
 export async function getCursos() {

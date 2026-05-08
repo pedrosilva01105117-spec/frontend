@@ -2,6 +2,7 @@ import Starfield from "@/components/Starfield";
 import Link from "next/link";
 import { deleteCurso, getCursos } from "./action";
 import CursosItem from "@/components/CursosItem";
+import { Key } from "react";
 
 export default async function Cursos() {
     const Cursos = await getCursos();
@@ -21,11 +22,11 @@ export default async function Cursos() {
                 <h1 className="text-white text-xl font-bold">Cursos</h1>
 
                 <ul className="w-full">
-                    {Cursos.map((Curso) => (
+                    {Cursos.map((Cursos) => (
                         <CursosItem
-                            key={Curso.id}
-                            id={Curso.id}
-                            nome={Curso.nome}
+                            key={Cursos.id}
+                            id={Cursos.id}
+                            nome={Cursos.nome}
                             onDelete={deleteCurso}
                         />
                     ))}

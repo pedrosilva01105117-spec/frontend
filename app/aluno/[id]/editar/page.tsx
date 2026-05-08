@@ -19,10 +19,6 @@ export default function AlunoPage() {
     const { id } = useParams();
     const [aluno, setAluno] = useState({} as Aluno);
     const  router = useRouter();
-    const cardRef = useRef<HTMLDivElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const starsRef = useRef<Star[]>([]);
-    const animFrameRef = useRef<number>(0);
 
      const initials = aluno.nome
         ? aluno.nome.split(" ").map((n) => n[0]).slice(0, 2).join("").toUpperCase()

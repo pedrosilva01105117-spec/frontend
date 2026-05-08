@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { Trash } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { deleteCurso } from "@/app/Cursos/action";
 
 interface Props {
     id: number;
@@ -10,6 +12,14 @@ interface Props {
 }
 
 export default function CursosItem({ id, nome, onDelete }: Props) {
+
+    const router = useRouter();
+
+  async function handleDelete() {
+    await deleteCurso(id);
+    router.refresh(); 
+  }
+  
     return (
         <div>
             <Link href={`/Curso/${id}`}>
@@ -19,7 +29,7 @@ export default function CursosItem({ id, nome, onDelete }: Props) {
             </Link>
             <button
                 className="text-red-500 transition-all duration-300 ease-in-out hover:scale-110 hover:text-red-900"
-                onClick={() => onDelete(id)}
+                onClick={handleDelete}
             >
                 <Trash />
             </button>
