@@ -2,10 +2,12 @@
 
 import { Curso } from "@/interfaces/cursos";
 import { useParams } from "next/navigation";
-import { useState, useEffect, SubmitEvent, SetStateAction } from "react";
+import { useState, useEffect, SubmitEvent, SetStateAction, use } from "react";
 import { getCurso, updateCurso } from "../action";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { getCursos } from "@/app/Cursos/action";
+import { Aluno } from "@/interfaces/alunos";
 
 export default function AlunoPage() {
     const { id } = useParams();
@@ -15,6 +17,7 @@ export default function AlunoPage() {
       useEffect(() => {
             getCurso(Number(id)).then((response: SetStateAction<Curso>) => setCurso(response));
         }, [id]);
+
 
         function handleChange(value: string|number, key: keyof Curso) {
            setCurso(oldState => ({ ...oldState, [key]: value}));

@@ -1,3 +1,4 @@
+
 import AlunoItem from "@/components/AlunoItem";
 import Starfield from "@/components/Starfield";
 import { getAlunos } from "./action";

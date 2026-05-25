@@ -207,11 +207,13 @@ export default function AlunoCadastroPage() {
                 <input className="border-2 rounded px-3 py-1 bg-white/10 text-white" placeholder="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} />
                 <input className="border-2 rounded px-3 py-1 bg-white/10 text-white" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-                <button className="bg-blue-500 text-white rounded-xl py-2 hover:scale-110 transition">
+                <button type="submit" className="bg-blue-500 text-white rounded-xl py-2 hover:scale-110 transition">
                     Cadastrar
                 </button>
                 <button
-                onClick={()=> router.back()} >Voltar</button>
+                onClick={()=> router.back()}>
+                    Voltar
+                </button>
             </form>
         </div>
 
